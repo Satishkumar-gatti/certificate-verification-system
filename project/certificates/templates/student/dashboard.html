@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* 🔥 BACKGROUND IMAGE */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+
+    background: url("{% static 'images/certificate_bg.png' %}") no-repeat center center fixed;
+    background-size: cover;
+
+    /* 🔥 little brightness boost */
+    filter: brightness(1.05);
+}
+
+/* 🔥 LIGHT OVERLAY (NOT DULL) */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3); /* 👈 perfect balance */
+    z-index: 0;
+}
+
+/* 🔥 HEADER */
+.header {
+    position: relative;
+    z-index: 2;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+/* 🔥 LOGOUT BUTTON */
+.logout-btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+/* 🔥 CENTER AREA */
+.main {
+    position: relative;
+    z-index: 2;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🔥 CERTIFICATE CARD */
+.cert-card {
+    width: 750px;
+    padding: 40px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(15px);
+
+    text-align: center;
+    color: white;
+
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* 🔥 TEXT STYLES */
+.cert-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.name {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.course {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🔥 HEADER -->
+<div class="header">
+    <h4>Welcome {{ name }} 👋</h4>
+    <a href="/logout/" class="logout-btn">Logout</a>
+</div>
+
+<!-- 🔥 MAIN -->
+<div class="main">
+
+    {% for cert in certificates %}
+    <div class="cert-card">
+
+        <div class="cert-title">Certificate of Achievement</div>
+
+        <p>This is to certify that</p>
+
+        <div class="name">{{ cert.student.name }}</div>
+
+        <p>has successfully completed</p>
+
+        <div class="course">{{ cert.course }}</div>
+
+        <p>with grade</p>
+
+        <h3>{{ cert.grade }}</h3>
+
+        <div class="footer">
+            Issued by {{ cert.issued_by }}
+        </div>
+
+    </div>
+    {% empty %}
+        <h3 style="color:white;">No Certificates Found</h3>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

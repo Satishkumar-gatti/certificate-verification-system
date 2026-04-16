@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>College Dashboard</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background-image: url("{% static 'images/college.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+/* CENTER */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CARD */
+.card {
+    background: rgba(0,0,0,0.75);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    color: white;
+    width: 350px;
+}
+
+/* BUTTON */
+.logout-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: red;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Welcome {{ name }} 👋</h2>
+        <p>🏫 College Dashboard</p>
+
+        <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

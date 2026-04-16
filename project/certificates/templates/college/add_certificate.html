@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Certificate</title>
+
+<style>
+body {
+    margin: 0;
+    background: url("{% static 'images/add-certificate.png' %}") center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+.card {
+    background: rgba(0,0,0,0.7);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+    width: 350px;
+    text-align: center;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    background: #00c6ff;
+    border: none;
+    color: white;
+}
+
+/* BACK */
+.back {
+    margin-top: 10px;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h3>Add Certificate</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Student Name" required>
+    <input type="text" name="course" placeholder="Course" required>
+    <input type="text" name="grade" placeholder="Grade" required>
+    <input type="text" name="issued_by" placeholder="Issued By" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- 🔥 FIXED BACK BUTTON -->
+<a href="{% url 'home' %}" class="back">Back</a>
+
+</div>
+
+</body>
+</html>

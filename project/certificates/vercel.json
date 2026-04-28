@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "certificate_verification/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "certificate_verification/wsgi.py"
+    }
+  ]
+}

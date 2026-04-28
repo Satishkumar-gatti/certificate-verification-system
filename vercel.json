@@ -3,16 +3,16 @@
   "builds": [
     {
       "src": "project/certificates/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
-      }
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "^/static/(.*)",
+      "dest": "project/certificates/static/$1"
+    },
+    {
+      "src": "^/(.*)",
       "dest": "project/certificates/wsgi.py"
     }
   ]

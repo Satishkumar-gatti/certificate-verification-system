@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-image: url("{% static 'image/about.png' %}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.90);
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">← Back</a>
+</body>
+</html>

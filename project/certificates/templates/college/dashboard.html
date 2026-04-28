@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-image: url("{% static 'image/college.png' %}");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            background-color: red;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(4px);
+            padding: 30px 25px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .box h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .box p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .box a {
+            display: block;
+            padding: 10px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .box a:hover {
+            background: #555;
+        }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 5px;
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button class="logout-btn"> Logout</button>
+    </form>
+
+    <div class="box">
+        <h2>College Dashboard</h2>
+        <p>Welcome, {{ user.name }}!</p>
+        <a href="{% url 'add_certificate' %}">Add Certificate</a>
+    </div>
+
+</body>
+</html>

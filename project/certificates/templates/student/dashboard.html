@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    height:100vh;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Main Card */
+.dashboard{
+    width:420px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(14px);
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    animation: fadeIn 1s ease;
+}
+
+/* Profile Circle */
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:white;
+    color:#2a5298;
+    font-size:38px;
+    font-weight:bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+/* Buttons */
+.btn{
+    display:block;
+    width:100%;
+    padding:13px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.verify{
+    background:#00c853;
+    color:white;
+}
+
+.verify:hover{
+    background:#00a844;
+    transform:scale(1.04);
+}
+
+.logout{
+    background:#ff3d00;
+    color:white;
+}
+
+.logout:hover{
+    background:#d93400;
+    transform:scale(1.04);
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <div class="avatar">
+        {{ user.name|slice:":1"|upper }}
+    </div>
+
+    <h1>Student Dashboard</h1>
+    <p>Welcome, <b>{{ user.name }}</b> 👋</p>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn logout">🚪 Logout</button>
+    </form>
+
+</div>
+
+</body>
+</html>

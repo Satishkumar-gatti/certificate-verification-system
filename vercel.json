@@ -2,18 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "project/certificates/wsgi.py",
+      "src": "project/certificates/certificates/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "^/static/(.*)",
-      "dest": "project/certificates/static/$1"
-    },
-    {
       "src": "^/(.*)",
-      "dest": "project/certificates/wsgi.py"
+      "dest": "project/certificates/certificates/wsgi.py"
     }
   ]
 }
